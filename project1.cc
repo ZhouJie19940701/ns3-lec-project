@@ -29,7 +29,7 @@ struct Data{
 };
 
 static void printHello(Data dat) {
-	std::cout<<Simulator::Now()<<" Hello "<<dat.name<<" "<<dat.ID_std<<std::endl<<std::endl;
+	std::cout<<Simulator::Now()<<" Hello "<<dat.name<<" "<<dat.ID_std<<std::endl;
 	Simulator::Schedule(Seconds(1/dat.F),&printHello,dat);
 }
 // ./test arg0 arg1 arg2
