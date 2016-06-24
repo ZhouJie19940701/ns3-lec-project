@@ -22,20 +22,21 @@
 #include "ns3/mobility-module.h"
 #include "ns3/csma-module.h"
 #include "ns3/internet-module.h"
-
+#include <vector>
 // Default Network Topology
-//
+//                                  |
+//                        Rank 1    |   Rank 0
+// ---------------------------------|----------------------------
 //   wifi1 10.1.3.0
 //                     AP1
 //  *    *    *    *    *
 //  |    |    |    |    |       10.1.1.0    
-// n6   n17  n8   n9   n1 ------------------ n0   n2   n3   n4   n5
+// n6   n7   n8   n9   n1 ------------------ n0   n2   n3   n4   n5
 //                           point-to-point   |    |    |    |    |
 //                                            *    *    *    *    *
 //                                           AP0    wifi0 10.1.2.0
 
 using namespace ns3;
-
 NS_LOG_COMPONENT_DEFINE ("ThirdScriptExample");
 
 int 
@@ -152,15 +153,26 @@ main (int argc, char *argv[])
     mobility.SetPositionAllocator ("ns3::GridPositionAllocator",
                                "MinX", DoubleValue (0.0),
                                "MinY", DoubleValue (0.0),
-                               "DeltaX", DoubleValue (5.0),
-                               "DeltaY", DoubleValue (10.0),
+                               "DeltaX", DoubleValue (25.0),
+                               "DeltaY", DoubleValue (25.0),
                                "GridWidth", UintegerValue (3),
                                "LayoutType", StringValue ("RowFirst"));
                                
     //配置 STA 移动方式，ConstantVelocityMobilityModel，匀速远离 AP 模型
+    ns3::Ptr<ns3::ConstantVelocityMobilityModel> constVModel;
     mobility.SetMobilityModel ("ns3::ConstantVelocityMobilityModel");
     mobility.Install (wifiStaNodes_0);
     mobility.Install (wifiStaNodes_1);
+    
+    for(int i = 0;i < (int)n0_Wifi;i ++){
+        constVModel = wifiStaNodes_0.Get(i)->GetObject<ConstantVelocityMobilityModel>();
+        constVModel->SetVelocity(Vector (2, 2 * i, 0));
+    }
+    for(int i = 0;i < (int)n1_Wifi;i ++){
+        constVModel = wifiStaNodes_1.Get(i)->GetObject<ConstantVelocityMobilityModel>();
+        constVModel->SetVelocity(Vector (2 * i, 2, 0));
+    }
+   
     //配置 AP 移动方式，ConstantPositionMobilityModel，固定位置模型
     mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
     mobility.Install (wifiApNode_0);
