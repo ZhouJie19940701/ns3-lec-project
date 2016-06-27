@@ -12,7 +12,7 @@ project3
 ![日志系统截图1](http://ww4.sinaimg.cn/mw690/ea098a20gw1f59v2uw67sj20k40ar7at.jpg "日志系统截图1")  
 ![日志系统截图2](http://ww1.sinaimg.cn/mw690/ea098a20gw1f59v2zra53j20k505mq68.jpg "日志系统截图2")  
 ####PyViz截图
-![PyViz截图](http://ww2.sinaimg.cn/mw690/ea098a20gw1f59v2v2wwwj20wk0f7gtt.jpg" "PyViz截图")  
+![PyViz截图](http://ww2.sinaimg.cn/mw690/ea098a20gw1f59v2v2wwwj20wk0f7gtt.jpg "PyViz截图")  
 
 ###WireShark查看文件截图
 ![WireShark](http://ww1.sinaimg.cn/mw690/ea098a20gw1f59v64oe6oj20p20f9ahp.jpg "WireShark")  
