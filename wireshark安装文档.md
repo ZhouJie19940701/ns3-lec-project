@@ -62,7 +62,11 @@ cd到文件目录解压：
 	$./configure  
 	$make  
 	$sudo make install  
-	
+####问题4、$./configure执行到最后出错之四
+出现：  
+    configure: Qt is not available  
+####解决：  
+    ～$ sudo apt-get install libqt4-dev  
 ###二、启动
 	问题解决后，按照以上步骤就把 wireshark 安装好了，接下来就是启动 wireshark 了。  
 	进入wireshark-1.2.2，输入命令：  
